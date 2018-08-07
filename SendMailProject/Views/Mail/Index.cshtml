@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="col-md-9">
+    <h2>Mail Gönder</h2>
+    <input type="text" id="textBox" class="form-control" />
+    <a class="btn btn-danger" onclick="SendMail()">Mail Göndermek için tıkla</a>
+</div>
+
+<script>
+    var SendMail = function () {
+        var mesaj = $('#textBox').val();
+        $.ajax({
+            type: "POST",
+            url: "/Mail/SendMailToUser",
+            data: {mesaj:mesaj},
+            success: function(data) {
+                alert("Success");
+            }
+            
+        });
+    }
+</script>
